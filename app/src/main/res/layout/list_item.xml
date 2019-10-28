@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/text_container"
+    android:padding="16dp"
+    tools:context="com.javamini.TravelCompanion.SplashScreenActivity">
+
+    <TextView
+        android:id="@+id/tv_place_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:textAllCaps="false"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="monospace"
+        tools:text="Hotel Name" />
+
+    <ImageView
+        android:id="@+id/iv_place_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/aso" />
+
+        <TextView
+            android:id="@+id/tv_place_discription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="fill"
+            android:padding="8dp"
+            android:text="@string/decription_hotel_one"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/colorSecondaryText"
+            tools:textColor="@color/colorSecondaryText" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:id="@+id/tv_place_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:autoLink="map"
+            android:drawablePadding="4dp"
+            android:drawableStart="@drawable/ic_location"
+            android:gravity="top"
+            android:paddingEnd="4dp"
+            android:paddingStart="4dp"
+            android:text="@string/location_hotel_one"
+            android:textColor="@color/colorSecondaryText"
+            tools:textColor="@color/colorSecondaryText" />
+
+        <TextView
+            android:id="@+id/tv_place_website"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableEnd="@drawable/ic_link"
+            android:drawablePadding="2dp"
+            android:gravity="end"
+            android:paddingEnd="4dp"
+            android:paddingStart="4dp"
+            android:text="@string/web_hotel_one"
+            android:textColor="@color/colorSecondaryText"
+            tools:textColor="@color/colorSecondaryText" />
+
+    </LinearLayout>
+
+</LinearLayout>

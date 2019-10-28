@@ -1,0 +1,170 @@
+<resources>
+    <string name="app_name">Travel Companion</string>
+    <string name="hotels">Hotels</string>
+    <string name="restaurants">Restaurants</string>
+    <string name="parks">Parks &amp; Recreation</string>
+    <string name="tourist_site">Popular Tourist Site</string>
+    <string name="change_location">Change Location</string>
+
+    <!--List of Hotel name in Abuja, description and their contact details starts here-->
+    <!--Hotel name-->
+    <string name="hotel_one">Sheraton Abuja Hotel</string>
+    <string name="hotel_two">Nicon Luxury Hotel</string>
+    <string name="hotel_three">Transcorp Hilton Abuja</string>
+    <string name="hotel_four">Royal Tropicana Hotel</string>
+    <string name="hotel_five">Peace Royal Resort</string>
+    <string name="hotel_six">Bon Hotel Abuja</string>
+    <string name="hotel_">Hotel</string>
+
+    <!--Hotel description-->
+    <string name="decription_hotel_one">Warm rooms (some with balconies) feature Wi-Fi (fee), satellite TV and en suite bathrooms. Upgraded rooms add minibars, and access to a lounge with free breakfast and Wi-Fi. Suites add dining and living areas, some offer kitchenettes. Room service is available.
+    </string>
+    <string name="decription_hotel_two">Featuring free WiFi throughout the property, Nicon Luxury Abuja offers accommodations in Abuja. The hotel has a spa center and sauna, and guests can enjoy.
+    </string>
+    <string name="decription_hotel_three">Subdued rooms with city views offer free Wi-Fi, TVs, minifridges and marble bathrooms. Upgraded rooms add sitting areas and private lounge access. Suites feature dining areas and living rooms; some have extra bedrooms, kitchenettes and/or balconies. Room service is available.
+    </string>
+    <string name="decription_hotel_four">pend a night or more at Royal Tropicana Hotel, Abuja and pay less! Explore the hotel before you visit - see photos.
+    </string>
+    <string name="decription_hotel_five">Peace Royal Resort is located in Abuja, 6 miles from Cameroon Embassy and 7 miles from Big Church. Guests can enjoy the on-site bar.
+    </string>
+
+    <!--Location-->
+    <string name="location_hotel_one">Ladi Kwali Way, 021189, Abuja</string>
+    <string name="location_hotel_two">903 Tafawa Balewa Way, Garki, Abuja</string>
+    <string name="location_hotel_three">1 Aguiyi Ironsi St, Wuse900001, Abuja</string>
+    <string name="location_hotel_four">81 A.E. Ekukinam St, Utako, Abuja</string>
+    <string name="location_hotel_five">Plot 88, 43 Crescent, 4th Avenue, Abuja</string>
+
+    <!--Website Link-->
+    <string name="web_hotel_one">https://www.sheratonabuja.com</string>
+    <string name="web_hotel_two">https://www.niconluxury.com</string>
+    <string name="web_hotel_three">https://www.hilton.com</string>
+    <string name="web_hotel_four">https://www.nowebsite.com</string>
+    <string name="web_hotel_five">www.hotelafri.ca</string>
+
+    <!--Google map for hotel locations-->
+    <string name="map_hotel_one">https://www.google.com.ng/maps/dir/\'\'/\'\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104e0ba9806edb85:0x2625e67c71ff00c1?sa=X&amp;ved=0ahUKEwivgJezk4bVAhXQbVAKHcM2BKMQ9RcICzAA</string>
+    <string name="map_hotel_two">https://www.google.com.ng/maps/dir/\'\'/\'\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104e0b97c21f3d99:0x963ef58bc0742eae?sa=X&amp;ved=0ahUKEwjh1JqAlIbVAhWOmbQKHU-hDTwQ9RcICzAA</string>
+    <string name="map_hotel_three">https://www.google.com.ng/maps/dir/\'\'/\'\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104dd42594163dd1:0x2b97d2308e5f8ee1?sa=X&amp;ved=0ahUKEwjk9PyklIbVAhVGJ1AKHYHlDMMQ9RcICzAA</string>
+    <string name="map_hotel_four">https://www.google.com.ng/maps/dir/\'\'/\'\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104e0b2978085fc1:0xd1aa41f8dc23c47e?sa=X&amp;ved=0ahUKEwjKjPLVlIbVAhVFbFAKHeZ9CmoQ9RcICjAA</string>
+    <string name="map_hotel_five">https://www.google.com.ng/maps/dir/\'\'/\'\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104ddf8b22f83d41:0x365ae61733d1405e?sa=X&amp;ved=0ahUKEwir1KXulIbVAhUJY1AKHb6aDp4Q9RcICzAA</string>
+    <string name="map_hotel_six">https://www.google.com.ng/maps/dir/\'\'/\'\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104e0a8b0cdf69c7:0xc75098cbba9f7b67?sa=X&amp;ved=0ahUKEwjA5eCTlYbVAhXFZlAKHWVnBWgQ9RcICzAA</string>
+
+
+    <!--List of Restaurants in Abuja-->
+    <!--Restuarant Name-->
+    <string name="restaurants_one">Serendib Restaurant &amp; Bar</string>
+    <string name="restaurants_two">Sinoni Restaurant</string>
+    <string name="restaurants_three">Panache Restaurant</string>
+    <string name="restaurants_four">355 Steakhouse &amp; Lounge</string>
+    <string name="restaurants_five">Sawadee Oriental Cuisine</string>
+    <string name="restaurants_six">Café de vie</string>
+    <string name="restaurants_seven">Red Fire Restaurant, Abuja</string>
+    <string name="restaurants_eight">Chez Victor</string>
+
+    <!--Restuarant Address-->
+    <string name="address_restaurants_one">Umaru Dikko Street Jabi, Abuja.</string>
+    <string name="address_restaurants_two">Zeto Court, 3 Oshogbo Close &amp; Off Emeka Anyaoku Street, Area 11, Garki, Garki, Abuja</string>
+    <string name="address_restaurants_three">1061 Herbert Macaulay Way, Central Business District, Abuja</string>
+    <string name="address_restaurants_four">38 Osun Crescent, Maitama 900271, Abuja</string>
+    <string name="address_restaurants_five">45 Kumasi Cres, Wuse, Abuja</string>
+    <string name="address_restaurants_six">101A Ebitu Ukiwe Street, Jabi, Abuja</string>
+    <string name="address_restaurants_seven">23, Jimmy Carter Street, Asokoro, Abuja</string>
+    <string name="address_restaurants_eight">7 Ganges Street, Maitama, Abuja </string>
+
+
+    <!--Restuarant website/phone-->
+    <string name="web_restaurants_one">0703 777 3636</string>
+    <string name="web_restaurants_two">www.sinonirestaurant.com</string>
+    <string name="web_restaurants_three">www.panachefinedining.com</string>
+    <string name="web_restaurants_four">www.355group.com</string>
+    <string name="web_restaurants_five">www.sawadeeoriental.com</string>
+    <string name="web_restaurants_six">www.cafedevie.com</string>
+    <string name="web_restaurants_seven">0903 435 2726</string>
+    <string name="web_restaurants_eight">0815 519 0829</string>
+
+    <!--Restuarant Google Map Location-->
+    <string name="map_restaurants_one">https://www.google.com.ng/maps/dir/\'\'/\'\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104e74d864d944a1:0xa5055ddefacb3087?sa=X&amp;ved=0ahUKEwjy6tKtj4bVAhVLbVAKHZwuDn4Q9RcICjAA</string>
+    <string name="map_restaurants_two">https://www.google.com.ng/maps/dir/\'\'/\'\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104e0b96390d477b:0x756de11e407bc77?sa=X&amp;ved=0ahUKEwjGzLuIkIbVAhUSPVAKHbEDAZYQ9RcICzAA</string>
+    <string name="map_restaurants_three">https://www.google.com.ng/maps/dir/\'\'/\'\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104e0ba15a7f33df:0xe615c7b3417c8517?sa=X&amp;ved=0ahUKEwi5ltfwkIbVAhWBZlAKHd0aBCwQ9RcICzAA</string>
+    <string name="map_restaurants_four">https://www.google.com.ng/maps/dir/\'\'/\'\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104e0a7aa40a28f3:0x3bf5564547bd2086?sa=X&amp;ved=0ahUKEwjtxv3NkYbVAhXKLlAKHccCBgAQ9RcICzAA</string>
+    <string name="map_restaurants_five">https://www.google.com.ng/maps/dir/\'\'/\'\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104e0af77d700c3d:0xf7276d9f2693caf9?sa=X&amp;ved=0ahUKEwiA0c75kYbVAhXBUlAKHZbBB0kQ9RcICzAA</string>
+    <string name="map_restaurants_six">https://www.google.com.ng/maps/dir/\'\'/\'\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104e0af63a108f65:0xafbdefe2c2a1de69?sa=X&amp;ved=0ahUKEwiV-KiqkobVAhUJPVAKHblNDBcQ9RcICjAA</string>
+    <string name="map_restaurants_seven">https://www.google.com.ng/maps/dir/\'\'/\'\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104e0bc2cf4c4615:0x7dc5e44200e3e8c4?sa=X&amp;ved=0ahUKEwjUq4nJkobVAhXNYVAKHYHKCosQ9RcICjAA </string>
+    <string name="map_restaurants_eight">https://www.google.com.ng/maps/dir/\'\'/\'\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104e0a7ca409523f:0x18cc49b77c02f651?sa=X&amp;ved=0ahUKEwjt58PmkobVAhVMKFAKHeazASMQ9RcICzAA</string>
+
+    <!--List of Parks in Abuja-->
+    <!--Park Name-->
+    <string name="park_one">The Millennium Park</string>
+    <string name="park_two">National Children\'s Park and Zoo</string>
+    <string name="park_three">Rabby Recreation Park</string>
+    <string name="park_four">Maitama Amusement Park</string>
+    <string name="park_five"> </string>
+
+    <!--Park Information-->
+    <string name="info_park_one">The Millennium Park is the largest public park of Abuja, the capital of Nigeria and is located in the Maitama district of the city. The Millennium Park was inaugurated by Her Majesty Queen Elizabeth II of the United Kingdom on 4 December 2003.</string>
+    <string name="info_park_two">The National Children\'s Park and Zoo is located in Asokoro District behind the Presidential Villa. It sits under the shadow of nearby Aso Rock.  It contains a lake and several animals such as giraffes, camels, antelopes, monkeys. </string>
+    <string name="info_park_three">Rabby Recreation Park; an expansive natural park on the landscape of Life Camp has no doubt added some &#8230; </string>
+    <string name="info_park_four">Maitama Amusement park Abuja is the number one when it comes to keeping the kids entertained in Abuja </string>
+
+    <!--Park Address-->
+    <string name="address_park_one">Three Arms Zone, Abuja </string>
+    <string name="address_park_two">Abuja City </string>
+    <string name="address_park_three">Abuja City </string>
+    <string name="address_park_four">IBB Way, Maitama, Maitama, Abuja, FCT </string>
+
+    <!--Park website/phone-->
+    <string name="web_park_one">www.fcda.gov.ng </string>
+    <string name="web_park_two">0803 393 4493 </string>
+    <string name="web_park_three">0809 277 1482 </string>
+    <string name="web_park_four">0816 333 6424 </string>
+
+    <!--Park Google map location-->
+    <string name="map_park_one">https://www.google.com.ng/maps/dir/\'\'/\'\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104e0a4b03693325:0x2e0791297a581241?sa=X&amp;ved=0ahUKEwjIuYKWjIbVAhVSmbQKHe0NBT8Q9RcICzAA</string>
+    <string name="map_park_two">https://www.google.com.ng/maps/dir/\'\'/\'\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104e0baaf0c5bde5:0xea93c728c84c6d1f?sa=X&amp;ved=0ahUKEwifi9-yl4bVAhVDblAKHRBMBecQ9RcICjAA</string>
+    <string name="map_park_three">https://www.google.com.ng/maps/dir/\'\'/\'\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104e75b914039a03:0xe28a509c444bd573?sa=X&amp;ved=0ahUKEwj-le2VmYbVAhXRI1AKHXiUCEoQ9RcICjAA</string>
+    <string name="map_park_four">https://www.google.com.ng/maps/dir/\'\'/\'\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104e0a43d8aeb74f:0x5a876909d7a5ff13?sa=X&amp;ved=0ahUKEwjn34nDmYbVAhUFblAKHYAvCdMQ9RcICjAA</string>
+
+    <!--List of tourist site Abuja-->
+    <!--Tourist site Name-->
+    <string name="tourist_one">Abuja National Mosque</string>
+    <string name="tourist_two">Zuma Rock</string>
+    <string name="tourist_three">Aso Rock</string>
+    <string name="tourist_four">Abuja National Stadium</string>
+
+    <!--Tourist site info-->
+    <string name="info_tourist_one">The Abuja National Mosque, also known as the Nigerian National Mosque, is the national mosque of Nigeria, a country with a substantial Muslim population. The history of the mosque began in the eighties, when it was decided to move the capital of Nigeria from Lagos to Abuja. In 1981 a group of prominent local Muslims decided to request the construction of a national mosque and to contribute to the project with donations.</string>
+    <string name="info_tourist_two">Zuma Rock is a large monolith, an igneous intrusion composed of gabbro and granodiorite, that is located in Niger State, Nigeria. It rises spectacularly immediately north of Nigeria\'s capital Abuja, along the main road from Abuja to Kaduna off Madala, and is sometimes referred to as the \"Gateway to Abuja from Suleja.\"</string>
+    <string name="info_tourist_three">Aso Rock is a large outcrop that is on the outskirts of Abuja, the capital of Nigeria. The Aso Rock is a 400-metre (1,300 ft) monolith and is the city\'s most noticeable feature. The Nigerian Presidential Complex, Nigerian National Assembly, and Nigerian Supreme Court are located around it. Much of the town extends to the south of the rock. \"Aso\" means victorious in the native language of the (now displaced) Asokoro (\"the people of victory\").</string>
+    <string name="info_tourist_four">Abuja National Stadium is a multipurpose national sports stadium located in Abuja, the Federal Capital Territory of Nigeria. The stadium serves as a home to the Nigerian national football team, as well as a center for various social, cultural, and religious events. </string>
+
+    <!--Tourist site address-->
+    <string name="address_tourist_one">1012 Sani Abacha Way, Central Business District, Abuja</string>
+    <string name="address_tourist_two">North of Abuja </string>
+    <string name="address_tourist_three">Aso Rock, Abuja </string>
+    <string name="address_tourist_four">Constitution Avenue, 900211, Abuja </string>
+
+    <!--Tourist site website/phone-->
+    <string name="web_tourist_one">www.nscia.com.ng</string>
+    <string name="web_tourist_two">www.example.com</string>
+    <string name="web_tourist_three">www.example.com</string>
+    <string name="web_tourist_four">www.npfl.ng</string>
+
+    <!--Tourist site Google Map location-->
+    <string name="map_tourist_one">https://www.google.com.ng/maps/dir/\'\'/\'\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104e0baf00555353:0x306c5459fc30896d?sa=X&amp;ved=0ahUKEwi9rt32h4bVAhUCmrQKHchhA8kQ9RcICzAA </string>
+    <string name="map_tourist_two">https://www.google.com.ng/maps/place/Zuma+Rock/data=!4m2!3m1!1s0x104dd7d112caed1b:0xb415df4f7772bdb8!5m1!1e4?sa=X&amp;ved=0ahUKEwj089D9jobVAhWEEVAKHZ5oD3gQ8gEIfzAP</string>
+    <string name="map_tourist_three">https://www.google.com.ng/maps/place/Aso+Rock/@9.083333,7.5339223,17z/data=!3m1!4b1!4m5!3m4!1s0x104e0991e66fddfb:0x9d4da92741f9018!8m2!3d9.083333!4d7.536111!5m1!1e4</string>
+    <string name="map_tourist_four">https://www.google.com.ng/maps/dir/\'\'/Location+of+the+national+stadium+abuja/data=!4m5!4m4!1m0!1m2!1m1!1s0x104e0b5a334275eb:0x3a912395bd8b3a54?sa=X&amp;ved=0ahUKEwjjmuXojYbVAhVObVAKHaDICOcQ9RcIjgEwDA </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="tag_line"> Your #1 City Guide App</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_exit">Exit</string>
+    <string name="title_activity_set_location">SetLocation</string>
+
+</resources>

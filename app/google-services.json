@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "441915226866",
+    "firebase_url": "https://travel-companion-ffcd5.firebaseio.com",
+    "project_id": "travel-companion-ffcd5",
+    "storage_bucket": "travel-companion-ffcd5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:441915226866:android:d0f8fbb925e90521766e6b",
+        "android_client_info": {
+          "package_name": "com.javamini.TravelCompanion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "441915226866-isf2df374ggkckvm90t7r688dsu8cvtk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAU6u6xJyvDrnw-dxRoY5qdBKKCrqprmBQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "441915226866-isf2df374ggkckvm90t7r688dsu8cvtk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

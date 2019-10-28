@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/spinner"
+        android:title="Select Location"
+        app:actionViewClass="android.widget.Spinner"
+        android:background="#ff00"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_exit"
+        android:orderInCategory="100"
+        android:title="@string/action_exit"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/mn_hotels"
+        android:orderInCategory="90"
+        android:title="@string/hotels" />
+
+    <item
+        android:id="@+id/mn_parks"
+        android:orderInCategory="91"
+        android:title="@string/parks" />
+
+    <item
+        android:id="@+id/mn_restaurants"
+        android:orderInCategory="92"
+        android:title="@string/restaurants" />
+
+    <item
+        android:id="@+id/mn_tourist"
+        android:orderInCategory="93"
+        android:title="@string/tourist_site" />
+</menu>
