@@ -63,8 +63,7 @@ public class HotelsActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for(DataSnapshot ds : dataSnapshot.getChildren()){
-                        Hotel h = ds.getValue(Hotel.class);
-                        places.add(new Place(h.PlaceImageLink,h.PlaceName,h.PlaceDescription,h.PlaceLocation,h.PlaceWebsite,h.PlaceMapID));
+                        places.add(ds.getValue(Place.class));
                     }
                 }
                 @Override

@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.net.URI;
 import java.util.ArrayList;
 
 /**
@@ -41,10 +40,10 @@ public class PlaceAdapter extends ArrayAdapter<Place> {
         ImageView ivPlaceImage = (ImageView)listItemView.findViewById(R.id.iv_place_image);
 
         if (currentPlace.hasImage()) {
-            if(currentPlace.getmPlaceImageLink().isEmpty()){
+            if(currentPlace.getImageLink().isEmpty()){
                 ivPlaceImage.setImageResource(currentPlace.getPlaceImageID());
             }else{
-                ivPlaceImage.setImageURI(Uri.parse(currentPlace.getmPlaceImageLink()));
+                ivPlaceImage.setImageURI(Uri.parse(currentPlace.getImageLink()));
             }
 
         } else {
@@ -62,11 +61,11 @@ public class PlaceAdapter extends ArrayAdapter<Place> {
         TextView tvPlaceDescription = (TextView)listItemView.findViewById(R.id.tv_place_discription);
 
         if (currentPlace.hasPlaceInfo()) {
-            if(currentPlace.getmPlaceDescription().isEmpty()) {
+            if(currentPlace.getDescription().isEmpty()) {
                 tvPlaceDescription.setText(currentPlace.getPlaceDescriptionID());
             }
             else{
-                tvPlaceDescription.setText(currentPlace.getmPlaceDescription());
+                tvPlaceDescription.setText(currentPlace.getDescription());
             }
         } else {
             tvPlaceDescription.setVisibility(View.GONE);
@@ -78,10 +77,10 @@ public class PlaceAdapter extends ArrayAdapter<Place> {
 
         TextView tvPlaceWebsite = (TextView)listItemView.findViewById(R.id.tv_place_website);
 
-        if (currentPlace.getmPlaceWebsite().isEmpty()) {
+        if (currentPlace.getWebsite().isEmpty()) {
             tvPlaceWebsite.setText(currentPlace.getPlaceWebsiteID());
         }else{
-            tvPlaceLocation.setText(currentPlace.getmPlaceWebsite());
+            tvPlaceLocation.setText(currentPlace.getWebsite());
         }
 
         View textContainer = listItemView.findViewById(R.id.text_container);

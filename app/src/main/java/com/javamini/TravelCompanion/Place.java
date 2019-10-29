@@ -15,22 +15,26 @@ public class Place {
      * Constant value that represents no value provide for place
      */
     private static final int NOT_PROVIDED = -1;
-    private String mPlaceWebsite;
-    private String mPlaceLocation;
-    private String mPlaceDescription;
-    private String mPlaceImageLink;
-    private String mPlaceName;
+    public String Website;
+    public String Location;
+    public String Description;
+    public String ImageLink;
+    public String Name;
 
     /**
      * Image resource ID for the place
      */
-    private int mPlaceImageID = NOT_PROVIDED;
+    public int mPlaceImageID = NOT_PROVIDED;
 
     private int mPlaceNameID;
     private int mPlaceDescriptionID = NOT_PROVIDED;
     private int mPlaceLocationID;
     private int mPlaceWebsiteID;
-    private String  mPlaceMapID;
+    public String Maplink;
+
+    Place(){
+
+    }
 
     public Place(int placeImageID, int placeNameID, int placeDescriptionID, int placeLocationID, int placeWebsiteID, String PlaceMapID){
 
@@ -39,17 +43,17 @@ public class Place {
         mPlaceDescriptionID = placeDescriptionID;
         mPlaceLocationID = placeLocationID;
         mPlaceWebsiteID = placeWebsiteID;
-        mPlaceMapID = PlaceMapID;
+        Maplink = PlaceMapID;
     }
 
     public Place(String placeImageLink, String placeName, String placeDescription, String placeLocation, String placeWebsite, String PlaceMapID){
 
-        mPlaceName = placeName;
-        mPlaceImageLink = placeImageLink;
-        mPlaceDescription = placeDescription;
-        mPlaceLocation = placeLocation;
-        mPlaceWebsite = placeWebsite;
-        mPlaceMapID = PlaceMapID;
+        Name = placeName;
+        ImageLink = placeImageLink;
+        Description = placeDescription;
+        Location = placeLocation;
+        Website = placeWebsite;
+        Maplink = PlaceMapID;
     }
 
     public Place(int placeNameID, int placeLocationID, int placeWebsiteID, String PlaceMapID) {
@@ -57,15 +61,15 @@ public class Place {
         mPlaceNameID = placeNameID;
         mPlaceLocationID = placeLocationID;
         mPlaceWebsiteID = placeWebsiteID;
-        mPlaceMapID = PlaceMapID;
+        Maplink = PlaceMapID;
     }
 
     public Place(String placeName, String placeLocation, String placeWebsite, String PlaceMapID){
 
-        mPlaceName = placeName;
-        mPlaceLocation = placeLocation;
-        mPlaceWebsite = placeWebsite;
-        mPlaceMapID = PlaceMapID;
+        Name = placeName;
+        Location = placeLocation;
+        Website = placeWebsite;
+        Maplink = PlaceMapID;
     }
 
 
@@ -74,47 +78,47 @@ public class Place {
         return mPlaceNameID;
     }
     public String getPlaceName(){
-        return mPlaceName;
+        return Name;
     }
 
 
     public int getPlaceImageID(){
         return mPlaceImageID;
     }
-    public String getmPlaceImageLink(){return mPlaceImageLink;}
+    public String getImageLink(){return ImageLink;}
 
 
     public int getPlaceDescriptionID(){
         return mPlaceDescriptionID;
     }
-    public String getmPlaceDescription(){return mPlaceDescription;}
+    public String getDescription(){return Description;}
 
 
     public int getPlaceLocationID() {
         return mPlaceLocationID;
     }
-    public String getmPlaceLocation(){return mPlaceLocation; }
+    public String getLocation(){return Location; }
 
 
     public int getPlaceWebsiteID() {
         return mPlaceWebsiteID;
     }
-    public String getmPlaceWebsite(){return mPlaceWebsite; }
+    public String getWebsite(){return Website; }
 
 
     public String getPlaceMapID(){
-        return mPlaceMapID;
+        return Maplink;
     }
 
 
     public boolean hasImage() {
-        return (mPlaceImageID == NOT_PROVIDED || mPlaceImageLink.isEmpty())?FALSE:TRUE;
+        return (mPlaceImageID == NOT_PROVIDED || ImageLink.isEmpty())?FALSE:TRUE;
     }
 
 
 
     public boolean hasPlaceInfo() {
-        return (mPlaceDescriptionID == NOT_PROVIDED || mPlaceDescription.isEmpty())?FALSE:TRUE;
+        return (mPlaceDescriptionID == NOT_PROVIDED || Description.isEmpty())?FALSE:TRUE;
     }
 
 }
