@@ -20,14 +20,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 
-public class ParksActivity extends AppCompatActivity {
+public class PghActivity extends AppCompatActivity {
     DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.place_list);
 
-        Intent i = new Intent();
+        Intent i = getIntent();
         String location = i.getStringExtra("Location");
 
         final ArrayList<Place> places = new ArrayList<>();

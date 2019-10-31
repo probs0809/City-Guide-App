@@ -31,7 +31,7 @@ public class HotelsActivity extends AppCompatActivity {
         setContentView(R.layout.place_list);
 
 
-        Intent i = new Intent();
+        Intent i = getIntent();
         String location = i.getStringExtra("Location");
 
         final ArrayList<Place> places = new ArrayList<Place>();

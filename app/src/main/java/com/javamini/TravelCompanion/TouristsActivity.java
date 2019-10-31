@@ -3,6 +3,7 @@ package com.javamini.TravelCompanion;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -19,18 +20,20 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class TouristsActivity extends AppCompatActivity {
     DatabaseReference mDatabase;
+    ArrayList<Place> places = new ArrayList<>();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.place_list);
 
-        Intent i = new Intent();
+        Intent i = getIntent();
         String location = i.getStringExtra("Location");
-        final ArrayList<Place> places = new ArrayList<>();
+
 
 
         if(location.equals("Location")){
@@ -49,23 +52,26 @@ public class TouristsActivity extends AppCompatActivity {
 
 
         }else{
-            mDatabase = FirebaseDatabase.getInstance().getReference("/"+location + "/TouristActivities");
-            mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    for(DataSnapshot ds : dataSnapshot.getChildren()){
-                        places.add(ds.getValue(Place.class));
-                    }
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+//            mDatabase = FirebaseDatabase.getInstance().getReference("/"+location + "/TouristActivities");
+//            mDatabase.addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                    for(DataSnapshot ds : dataSnapshot.getChildren()){
+//                        PlaceFirebase pf = ds.getValue(PlaceFirebase.class);
+//                        places.add(new Place(pf.ImageLink,pf.Name,pf.Description,pf.Website,pf.Location,pf.Maplink));
+//                        Toast.makeText(getApplicationContext(), pf.getImageLink(),Toast.LENGTH_LONG).show();
+//                    }
+//                }
+//                @Override
+//                public void onCancelled( DatabaseError databaseError) {
+//
+//                }
+//            });
 
-                }
-            });
+
+
+
         }
-
-
-
 
         PlaceAdapter adapter = new PlaceAdapter(this, places, R.color.colorHome);
         ListView listView = (ListView) findViewById(R.id.list_view);

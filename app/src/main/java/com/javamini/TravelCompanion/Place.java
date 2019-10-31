@@ -15,11 +15,11 @@ public class Place {
      * Constant value that represents no value provide for place
      */
     private static final int NOT_PROVIDED = -1;
-    public String Website;
-    public String Location;
-    public String Description;
-    public String ImageLink;
-    public String Name;
+    public String Website = "";
+    public String Location = "";
+    public String Description = "";
+    public String ImageLink = "";
+    public String Name = "";
 
     /**
      * Image resource ID for the place
@@ -36,7 +36,7 @@ public class Place {
 
     }
 
-    public Place(int placeImageID, int placeNameID, int placeDescriptionID, int placeLocationID, int placeWebsiteID, String PlaceMapID){
+    Place(int placeImageID, int placeNameID, int placeDescriptionID, int placeLocationID, int placeWebsiteID, String PlaceMapID){
 
         mPlaceNameID = placeNameID;
         mPlaceImageID = placeImageID;
@@ -46,7 +46,7 @@ public class Place {
         Maplink = PlaceMapID;
     }
 
-    public Place(String placeImageLink, String placeName, String placeDescription, String placeLocation, String placeWebsite, String PlaceMapID){
+    Place(String placeImageLink, String placeName, String placeDescription, String placeLocation, String placeWebsite, String PlaceMapID){
 
         Name = placeName;
         ImageLink = placeImageLink;
@@ -56,7 +56,7 @@ public class Place {
         Maplink = PlaceMapID;
     }
 
-    public Place(int placeNameID, int placeLocationID, int placeWebsiteID, String PlaceMapID) {
+    Place(int placeNameID, int placeLocationID, int placeWebsiteID, String PlaceMapID) {
 
         mPlaceNameID = placeNameID;
         mPlaceLocationID = placeLocationID;
@@ -64,7 +64,7 @@ public class Place {
         Maplink = PlaceMapID;
     }
 
-    public Place(String placeName, String placeLocation, String placeWebsite, String PlaceMapID){
+    Place(String placeName, String placeLocation, String placeWebsite, String PlaceMapID){
 
         Name = placeName;
         Location = placeLocation;
@@ -112,13 +112,26 @@ public class Place {
 
 
     public boolean hasImage() {
-        return (mPlaceImageID == NOT_PROVIDED || ImageLink.isEmpty())?FALSE:TRUE;
+
+        boolean bool = false;
+        if(mPlaceImageID == NOT_PROVIDED && ImageLink.isEmpty()){
+            bool = false;
+        }else{
+            bool = true;
+        }
+        return bool;
     }
 
 
 
     public boolean hasPlaceInfo() {
-        return (mPlaceDescriptionID == NOT_PROVIDED || Description.isEmpty())?FALSE:TRUE;
+        boolean bool = false;
+        if(mPlaceDescriptionID == NOT_PROVIDED && Description.isEmpty()){
+            bool = false;
+        }else{
+            bool = true;
+        }
+        return bool;
     }
 
 }

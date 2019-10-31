@@ -28,7 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     //String[] location = {"India","USA"};
     ArrayList<String> location = new ArrayList<String>();
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        // Sets onClick Listener on the Parks TextView to Launch the ParksActivity
+        // Sets onClick Listener on the Parks TextView to Launch the PghActivity
         TextView tvParks = (TextView) findViewById(R.id.tv_parks);
         tvParks.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +91,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startTourists();
             }
         });
+
+
+
     }
 
     @Override
@@ -135,14 +138,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
         spinner.setAdapter(aa);
+        //spinner.setOnItemSelectedListener(this);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                locationInt = i;
+               // Toast.makeText(getApplicationContext(),locationInt , Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -184,16 +197,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        locationInt = i;
-        Toast.makeText(getApplicationContext(),locationInt , Toast.LENGTH_LONG).show();
-    }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
 
     // Starts the Hotel Activity
     public void startHotels() {
@@ -202,9 +206,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         startActivity(intent);
     }
 
-    //Starts the Parks Activity
+    //Starts the pg Activity
     public void startParks() {
-        Intent intent = new Intent(this, ParksActivity.class);
+        Intent intent = new Intent(this, PghActivity.class);
         intent.putExtra("Location",location.get(locationInt));
         startActivity(intent);
     }

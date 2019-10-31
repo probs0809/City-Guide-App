@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_bright"
+    tools:context=".Login">
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spin"
+        android:layout_width="350dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="200dp"
+        android:background="@android:color/white"
+        />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/btn_sign_in"
+        android:layout_marginTop="330dp"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:layout_marginBottom="20dp" />
+
+
+</RelativeLayout>

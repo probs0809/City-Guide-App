@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.javamini.TravelCompanion">
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -9,8 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name="com.javamini.TravelCompanion.SplashScreenActivity">
+        <activity android:name=".Login"></activity>
+        <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,25 +19,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.javamini.TravelCompanion.MainActivity"
+            android:name=".MainActivity"
             android:label="Travel Companion"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.javamini.TravelCompanion.HotelsActivity"
+            android:name=".HotelsActivity"
             android:label="Hotels"
-            android:parentActivityName="com.javamini.TravelCompanion.MainActivity" />
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="com.javamini.TravelCompanion.ParksActivity"
+            android:name=".PghActivity"
             android:label="Parks"
-            android:parentActivityName="com.javamini.TravelCompanion.MainActivity" />
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="com.javamini.TravelCompanion.RestaurantsActivity"
+            android:name=".RestaurantsActivity"
             android:label="Restaurants"
-            android:parentActivityName="com.javamini.TravelCompanion.MainActivity" />
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="com.javamini.TravelCompanion.TouristsActivity"
+            android:name=".TouristsActivity"
             android:label="Tourist"
-            android:parentActivityName="com.javamini.TravelCompanion.MainActivity" />
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>
