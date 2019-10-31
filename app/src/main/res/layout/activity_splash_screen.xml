@@ -3,16 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorHome"
+    android:background="@color/colorBackground"
     android:orientation="vertical"
     tools:context="com.javamini.TravelCompanion.SplashScreenActivity">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="1080dp"
+        android:layout_height="650dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/aso" />
+        android:src="@drawable/logo" />
 
     <ProgressBar
         android:id="@+id/progressBar"
