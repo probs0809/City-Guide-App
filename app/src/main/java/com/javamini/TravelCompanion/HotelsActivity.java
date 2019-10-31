@@ -59,11 +59,12 @@ public class HotelsActivity extends AppCompatActivity {
                     "https://www.google.com.ng/maps/dir/\\'\\'/\\'\\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104ddf8b22f83d41:0x365ae61733d1405e?sa=X&amp;ved=0ahUKEwir1KXulIbVAhUJY1AKHb6aDp4Q9RcICzAA"));
         }else{
             mDatabase = FirebaseDatabase.getInstance().getReference("/"+location + "/Hotel");
-            mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            mDatabase.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for(DataSnapshot ds : dataSnapshot.getChildren()){
-                        places.add(ds.getValue(Place.class));
+                        PlaceFirebase pf = ds.getValue(PlaceFirebase.class);
+                        places.add(new Place(pf.ImageLink,pf.Name,pf.Description,pf.Website,pf.Location,pf.Maplink));
                     }
                 }
                 @Override

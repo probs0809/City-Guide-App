@@ -49,11 +49,12 @@ public class PghActivity extends AppCompatActivity {
         }
         else{
             mDatabase = FirebaseDatabase.getInstance().getReference("/"+location + "/Parks");
-            mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            mDatabase.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for(DataSnapshot ds : dataSnapshot.getChildren()){
-                        places.add(ds.getValue(Place.class));
+                        PlaceFirebase pf = ds.getValue(PlaceFirebase.class);
+                        places.add(new Place(pf.ImageLink,pf.Name,pf.Description,pf.Website,pf.Location,pf.Maplink));
                     }
                 }
                 @Override

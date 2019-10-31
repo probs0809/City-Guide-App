@@ -36,7 +36,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class Login extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private static final int RC_SIGN_IN = 9001;
@@ -76,8 +75,6 @@ public class Login extends AppCompatActivity implements AdapterView.OnItemSelect
 
         mDatabase = FirebaseDatabase.getInstance().getReference("/Location");
         locationData.add("Select Location");
-        locationData.add("Location");
-
 
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

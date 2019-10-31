@@ -52,21 +52,21 @@ public class TouristsActivity extends AppCompatActivity {
 
 
         }else{
-//            mDatabase = FirebaseDatabase.getInstance().getReference("/"+location + "/TouristActivities");
-//            mDatabase.addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                    for(DataSnapshot ds : dataSnapshot.getChildren()){
-//                        PlaceFirebase pf = ds.getValue(PlaceFirebase.class);
-//                        places.add(new Place(pf.ImageLink,pf.Name,pf.Description,pf.Website,pf.Location,pf.Maplink));
-//                        Toast.makeText(getApplicationContext(), pf.getImageLink(),Toast.LENGTH_LONG).show();
-//                    }
-//                }
-//                @Override
-//                public void onCancelled( DatabaseError databaseError) {
-//
-//                }
-//            });
+            mDatabase = FirebaseDatabase.getInstance().getReference("/"+location + "/TouristActivities");
+            mDatabase.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for(DataSnapshot ds : dataSnapshot.getChildren()){
+                        PlaceFirebase pf = ds.getValue(PlaceFirebase.class);
+                        places.add(new Place(pf.ImageLink,pf.Name,pf.Description,pf.Website,pf.Location,pf.Maplink));
+                        Toast.makeText(getApplicationContext(), pf.getImageLink(),Toast.LENGTH_LONG).show();
+                    }
+                }
+                @Override
+                public void onCancelled( DatabaseError databaseError) {
+
+                }
+            });
 
 
 

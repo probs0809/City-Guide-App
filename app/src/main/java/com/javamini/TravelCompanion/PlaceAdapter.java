@@ -18,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import static com.firebase.ui.auth.AuthUI.getApplicationContext;
@@ -149,11 +151,16 @@ class DownloadImageFromInternet extends AsyncTask<String, Void, Bitmap> {
     }
 
     protected Bitmap doInBackground(String... urls) {
-        String imageURL = urls[0];
+        URL imageURL = null;
+        try {
+            imageURL = new URL(urls[0]);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         Bitmap bimage = null;
         try {
-            InputStream in = new java.net.URL(imageURL).openStream();
-            bimage = BitmapFactory.decodeStream(in);
+           // InputStream in = new java.net.URL(imageURL).openStream();
+            bimage = BitmapFactory.decodeStream(imageURL.openConnection().getInputStream());
 
         } catch (Exception e) {
             Log.e("Error Message", e.getMessage());
