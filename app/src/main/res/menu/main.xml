@@ -32,4 +32,9 @@
         android:id="@+id/mn_tourist"
         android:orderInCategory="93"
         android:title="@string/tourist_site" />
+
+    <item
+        android:id="@+id/mn_logout"
+        android:orderInCategory="93"
+        android:title="Logout" />
 </menu>

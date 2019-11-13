@@ -3,6 +3,7 @@ package com.javamini.TravelCompanion;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -24,15 +25,15 @@ import java.util.ArrayList;
 public class HotelsActivity extends AppCompatActivity {
 
     DatabaseReference mDatabase;
-
+    Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.place_list);
-
+        handler = new Handler(this.getMainLooper());
 
         Intent i = getIntent();
-        String location = i.getStringExtra("Location");
+        final String location = i.getStringExtra("Location");
 
         final ArrayList<Place> places = new ArrayList<Place>();
 
@@ -57,57 +58,104 @@ public class HotelsActivity extends AppCompatActivity {
                     R.string.decription_hotel_five, R.string.location_hotel_five,
                     R.string.web_hotel_five,
                     "https://www.google.com.ng/maps/dir/\\'\\'/\\'\\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104ddf8b22f83d41:0x365ae61733d1405e?sa=X&amp;ved=0ahUKEwir1KXulIbVAhUJY1AKHb6aDp4Q9RcICzAA"));
-        }else{
-            mDatabase = FirebaseDatabase.getInstance().getReference("/"+location + "/Hotel");
-            mDatabase.addValueEventListener(new ValueEventListener() {
+
+            PlaceAdapter adapter = new PlaceAdapter(this, places, R.color.colorHome);
+
+            ListView listView = (ListView) findViewById(R.id.list_view);
+
+            listView.setAdapter(adapter);
+
+            //Launch google maps for a place when click
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    for(DataSnapshot ds : dataSnapshot.getChildren()){
-                        PlaceFirebase pf = ds.getValue(PlaceFirebase.class);
-                        places.add(new Place(pf.ImageLink,pf.Name,pf.Description,pf.Website,pf.Location,pf.Maplink));
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    // Set animation effect when view is clicked
+                    Animation animation = new AlphaAnimation(0.3f,1.0f);
+                    animation.setDuration(5000);
+                    view.startAnimation(animation);
+
+                    // get the place map id an launch a google map view of the place
+                    Place place = places.get(i);
+
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse(place.getPlaceMapID()));
+
+                    if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(mapIntent);
                     }
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    else {
+                        Toast.makeText(getApplicationContext(), "No App to Handle Intent", Toast.LENGTH_LONG).show();
+                    }
 
                 }
             });
 
+        }else{
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            mDatabase = FirebaseDatabase.getInstance().getReference("/"+location + "/Hotel");
+                            mDatabase.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    places.clear();
+                                    for(DataSnapshot ds : dataSnapshot.getChildren()){
+                                        PlaceFirebase pf = ds.getValue(PlaceFirebase.class);
+                                        places.add(new Place(pf.ImageLink,pf.Name,pf.Description,pf.Website,pf.Location,pf.Maplink));
+                                    }
+
+                                    PlaceAdapter adapter = new PlaceAdapter(HotelsActivity.this, places, R.color.colorHome);
+
+                                    ListView listView = (ListView) findViewById(R.id.list_view);
+
+                                    listView.setAdapter(adapter);
+
+                                    //Launch google maps for a place when click
+                                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                        @Override
+                                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                                            // Set animation effect when view is clicked
+                                            Animation animation = new AlphaAnimation(0.3f,1.0f);
+                                            animation.setDuration(5000);
+                                            view.startAnimation(animation);
+
+                                            // get the place map id an launch a google map view of the place
+                                            Place place = places.get(i);
+
+                                            Intent mapIntent = new Intent(Intent.ACTION_VIEW,
+                                                    Uri.parse(place.getPlaceMapID()));
+
+                                            if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                                                startActivity(mapIntent);
+                                            }
+                                            else {
+                                                Toast.makeText(getApplicationContext(), "No App to Handle Intent", Toast.LENGTH_LONG).show();
+                                            }
+
+                                        }
+                                    });
+
+
+                                }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
+                        }
+                    });
+                }
+            }).start();
+
+
+
         }
 
-
-
-
-        PlaceAdapter adapter = new PlaceAdapter(this, places, R.color.colorHome);
-
-        ListView listView = (ListView) findViewById(R.id.list_view);
-
-        listView.setAdapter(adapter);
-
-        //Launch google maps for a place when click
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                // Set animation effect when view is clicked
-                Animation animation = new AlphaAnimation(0.3f,1.0f);
-                animation.setDuration(5000);
-                view.startAnimation(animation);
-
-                // get the place map id an launch a google map view of the place
-                Place place = places.get(i);
-
-                Intent mapIntent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse(place.getPlaceMapID()));
-
-                if (mapIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(mapIntent);
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), "No App to Handle Intent", Toast.LENGTH_LONG).show();
-                }
-
-            }
-        });
     }
 }

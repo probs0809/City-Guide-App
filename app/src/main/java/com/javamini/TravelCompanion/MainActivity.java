@@ -10,6 +10,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,7 +37,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //String[] location = {"India","USA"};
     ArrayList<String> location = new ArrayList<String>();
     int locationInt = 0;
-    DatabaseReference mDatabase;
+    DatabaseReference ref1,ref2;
+    Handler handler;
 
 
 
@@ -46,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        handler = new Handler(this.getMainLooper());
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -115,26 +118,41 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getMenuInflater().inflate(R.menu.main, menu);
         MenuItem item = menu.findItem(R.id.spinner);
         final Spinner spinner = (Spinner) MenuItemCompat.getActionView(item);
-        mDatabase = FirebaseDatabase.getInstance().getReference("/Location");
+
 
         location.add("Select Location");
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+        ref1 = FirebaseDatabase.getInstance().getReference("/Location");
+        new Thread(new Runnable() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.getChildren()){
-                    location.add(ds.getValue().toString());
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
 
-                }
+
+                        ref1.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
+                                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                                    location.add(ds.getValue().toString());
+
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                    }
+                });
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+        }).start();
 
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("Users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/UID");
+
 
 
 
@@ -144,25 +162,44 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //Setting the ArrayAdapter data on the Spinner
         spinner.setAdapter(aa);
         //spinner.setOnItemSelectedListener(this);
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+
+        ref2 = FirebaseDatabase.getInstance().getReference("Users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/UID");
+
+        new Thread(new Runnable() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                locationInt = location.indexOf((dataSnapshot.getValue()).toString());
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        ref2.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                locationInt = location.indexOf((dataSnapshot.getValue()).toString());
 
 
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+
+                        spinner.setSelection(locationInt);
+
+
+
+                    }
+                });
             }
+        }).start();
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        spinner.setSelection(locationInt);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 locationInt = i;
-               // Toast.makeText(getApplicationContext(),locationInt , Toast.LENGTH_LONG).show();
+                // Toast.makeText(getApplicationContext(),locationInt , Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -170,6 +207,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             }
         });
+
+
         return true;
     }
 
@@ -210,6 +249,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startTourists();
 
         }
+        else if(id == R.id.nav_logout){
+            logout();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -246,6 +288,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         startActivity(intent);
     }
 
+    public void logout(){
+        FirebaseAuth.getInstance().signOut();
+    }
 
 
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -24,15 +25,16 @@ import java.util.ArrayList;
 
 public class RestaurantsActivity extends AppCompatActivity {
     DatabaseReference mDatabase;
+    Handler handler;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.place_list);
-
+        handler = new Handler(this.getMainLooper());
         Intent i = getIntent();
-        String location = i.getStringExtra("Location");
+        final String location = i.getStringExtra("Location");
         final ArrayList<Place> places = new ArrayList<>();
 
         if(location.equals("Location")){
@@ -61,46 +63,84 @@ public class RestaurantsActivity extends AppCompatActivity {
                     R.string.web_restaurants_eight,
                     "https://www.google.com.ng/maps/dir/\\'\\'/\\'\\'/data=!4m5!4m4!1m0!1m2!1m1!1s0x104e0a7ca409523f:0x18cc49b77c02f651?sa=X&amp;ved=0ahUKEwjt58PmkobVAhVMKFAKHeazASMQ9RcICzAA"));
 
+            PlaceAdapter adapter = new PlaceAdapter(this, places, R.color.colorHome);
+            ListView listView = (ListView) findViewById(R.id.list_view);
+            listView.setAdapter(adapter);
 
-
-        }else{
-            mDatabase = FirebaseDatabase.getInstance().getReference("/"+location + "/Restaurants");
-            mDatabase.addValueEventListener(new ValueEventListener() {
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    for(DataSnapshot ds : dataSnapshot.getChildren()){
-                        PlaceFirebase pf = ds.getValue(PlaceFirebase.class);
-                        places.add(new Place(pf.ImageLink,pf.Name,pf.Description,pf.Website,pf.Location,pf.Maplink));
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    // get the place map id an launch a google map view of the place
+                    Place place = places.get(i);
+
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse(place.getPlaceMapID()));
+
+                    if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(mapIntent);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "No App to Handle Intent", Toast.LENGTH_LONG).show();
                     }
                 }
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
             });
+
+        }else{
+
+
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            mDatabase = FirebaseDatabase.getInstance().getReference("/"+location + "/Restaurants");
+                            mDatabase.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    places.clear();
+                                    for(DataSnapshot ds : dataSnapshot.getChildren()){
+                                        PlaceFirebase pf = ds.getValue(PlaceFirebase.class);
+                                        places.add(new Place(pf.ImageLink,pf.Name,pf.Description,pf.Website,pf.Location,pf.Maplink));
+                                    }
+
+                                    PlaceAdapter adapter = new PlaceAdapter(RestaurantsActivity.this, places, R.color.colorHome);
+                                    ListView listView = (ListView) findViewById(R.id.list_view);
+                                    listView.setAdapter(adapter);
+
+                                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                        @Override
+                                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                            // get the place map id an launch a google map view of the place
+                                            Place place = places.get(i);
+
+                                            Intent mapIntent = new Intent(Intent.ACTION_VIEW,
+                                                    Uri.parse(place.getPlaceMapID()));
+
+                                            if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                                                startActivity(mapIntent);
+                                            } else {
+                                                Toast.makeText(getApplicationContext(), "No App to Handle Intent", Toast.LENGTH_LONG).show();
+                                            }
+                                        }
+                                    });
+                                }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
+
+
+                        }
+                    });
+                }
+            }).start();
+
         }
 
 
 
-        PlaceAdapter adapter = new PlaceAdapter(this, places, R.color.colorHome);
-        ListView listView = (ListView) findViewById(R.id.list_view);
-        listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                // get the place map id an launch a google map view of the place
-                Place place = places.get(i);
-
-                Intent mapIntent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse(place.getPlaceMapID()));
-
-                if (mapIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(mapIntent);
-                } else {
-                    Toast.makeText(getApplicationContext(), "No App to Handle Intent", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
     }
 }

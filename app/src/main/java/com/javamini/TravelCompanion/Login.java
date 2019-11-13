@@ -1,19 +1,16 @@
 package com.javamini.TravelCompanion;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -47,6 +44,8 @@ public class Login extends AppCompatActivity implements AdapterView.OnItemSelect
     private FirebaseAuth mAuth;
     DatabaseReference mDatabase;
     int locationInt = 0;
+    Handler handler;
+
 
     ArrayList<String> locationData = new ArrayList<String>();
     private String TAG = "FIREBASE :: ";
@@ -55,7 +54,7 @@ public class Login extends AppCompatActivity implements AdapterView.OnItemSelect
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        handler = new Handler(this.getMainLooper());
         SignInButton signin =(SignInButton) findViewById(R.id.btn_sign_in);
 
         location = (Spinner)findViewById(R.id.spin);
@@ -76,20 +75,32 @@ public class Login extends AppCompatActivity implements AdapterView.OnItemSelect
         mDatabase = FirebaseDatabase.getInstance().getReference("/Location");
         locationData.add("Select Location");
 
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+        new Thread(new Runnable() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.getChildren()){
-                    locationData.add(ds.getValue().toString());
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                                    locationData.add(ds.getValue().toString());
 
-                }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                    }
+                });
             }
+        }).start();
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
 
         ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,locationData);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -168,6 +179,7 @@ public class Login extends AppCompatActivity implements AdapterView.OnItemSelect
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
+                assert account != null;
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
