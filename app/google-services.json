@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "441915226866-e3vgt1kcnbri67ubltfbhsrustigaiao.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.javamini.TravelCompanion",
+            "certificate_hash": "cbb8305076e9c50f221638e97e963a44344f582b"
+          }
+        },
+        {
           "client_id": "441915226866-e9bfb6on9rj6t6eddnhdf43d52s39tne.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

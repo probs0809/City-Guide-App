@@ -38,6 +38,7 @@ public class HotelsActivity extends AppCompatActivity {
         final ArrayList<Place> places = new ArrayList<Place>();
 
         if(location.equals("Location")){
+
             places.add(new Place(R.drawable.sheraton, R.string.hotel_one,
                     R.string.decription_hotel_one, R.string.location_hotel_one,
                     R.string.web_hotel_one,

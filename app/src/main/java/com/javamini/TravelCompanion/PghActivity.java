@@ -80,7 +80,7 @@ public class PghActivity extends AppCompatActivity{
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            mDatabase = FirebaseDatabase.getInstance().getReference("/"+location + "/Parks");
+                            mDatabase = FirebaseDatabase.getInstance().getReference("/"+location + "/PghActivity");
                             mDatabase.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
