@@ -28,7 +28,7 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".PghActivity"
-            android:label="Parks"
+            android:label="Paying Guest And Hostels"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".RestaurantsActivity"

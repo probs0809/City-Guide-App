@@ -137,8 +137,6 @@ public class Login extends AppCompatActivity implements AdapterView.OnItemSelect
                             myRef.setValue(user.getEmail());
                             myRef = database.getReference("Users/" + user.getUid() + "/name");
                             myRef.setValue(user.getDisplayName());
-//                            myRef = database.getReference("Users/" + user.getUid() + "/FCMID");
-//                            myRef.setValue(FirebaseInstanceId.getInstance().getInstanceId());
                             myRef = database.getReference("Users/" + user.getUid() + "/UID");
                             myRef.setValue(user.getUid());
                             myRef = database.getReference("Users/" + user.getUid() + "/photoURL");
